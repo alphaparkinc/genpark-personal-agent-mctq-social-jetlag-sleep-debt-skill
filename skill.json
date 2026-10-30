@@ -1,0 +1,65 @@
+{
+  "name": "genpark-personal-agent-mctq-social-jetlag-sleep-debt-skill",
+  "version": "1.0.0",
+  "title": "MCTQ Social Jetlag & Sleep Debt Chronobiology Pacer Skill",
+  "description": "Munich ChronoType Questionnaire (MCTQ) mid-sleep on free days (MSFsc) correction, social jetlag calculation, and cumulative sleep debt recovery pacer. Built for GenPark (https://www.genpark.ai).",
+  "homepage": "https://www.genpark.ai",
+  "linkedin": "https://www.linkedin.com/company/92955550",
+  "category": "personal-agent",
+  "topics": [
+    "mctq",
+    "social-jetlag",
+    "sleep-debt",
+    "chronotype",
+    "personal-agent",
+    "model-context-protocol",
+    "genpark"
+  ],
+  "tools": [
+    {
+      "name": "calculate_mctq_corrected_mid_sleep",
+      "description": "Calculate sleep-corrected mid-sleep on free days (MSFsc) to classify true internal biological chronotype.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "sleep_onset_free_hours": {
+            "type": "number"
+          },
+          "sleep_duration_free_hours": {
+            "type": "number"
+          },
+          "sleep_duration_work_hours": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "sleep_onset_free_hours",
+          "sleep_duration_free_hours",
+          "sleep_duration_work_hours"
+        ]
+      }
+    },
+    {
+      "name": "compute_social_jetlag_and_debt_recovery",
+      "description": "Compute social jetlag disparity (hours) between work and free days and synthesize sleep debt repayment schedule.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "mid_sleep_work_hours": {
+            "type": "number"
+          },
+          "mid_sleep_free_hours": {
+            "type": "number"
+          },
+          "weekly_sleep_debt_hours": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "mid_sleep_work_hours",
+          "mid_sleep_free_hours"
+        ]
+      }
+    }
+  ]
+}
